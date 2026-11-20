@@ -610,7 +610,7 @@ section.stone>.wrap{position:relative;z-index:2}
 <!-- ============ HERO ============ -->
 <section class="hero stone s-deep glow" id="inicio" style="--gx: 74%; --gy: 46%">
 <div class="hero-video" aria-hidden="true">
-<iframe id="heroYT" src="https://www.youtube-nocookie.com/embed/VIcloWJDS1A?autoplay=1&amp;mute=1&amp;start=6&amp;enablejsapi=1&amp;controls=0&amp;playsinline=1&amp;modestbranding=1&amp;rel=0&amp;disablekb=1&amp;iv_load_policy=3&amp;fs=0" title="Video de fondo" tabindex="-1" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+<iframe id="heroYT" src="https://www.youtube-nocookie.com/embed/VIcloWJDS1A?autoplay=1&amp;mute=1&amp;start=15&amp;enablejsapi=1&amp;controls=0&amp;playsinline=1&amp;modestbranding=1&amp;rel=0&amp;disablekb=1&amp;iv_load_policy=3&amp;fs=0" title="Video de fondo" tabindex="-1" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin"></iframe>
 </div>
 <div class="wrap">
 <div class="hero-grid">
@@ -867,7 +867,7 @@ Escríbenos por WhatsApp</a>
   chips.forEach(function(c){c.addEventListener('click',function(){pick(c.dataset.f);});});
 })();
 // Video del hero: empieza en el segundo VIDEO_INICIO y al terminar vuelve a ese punto
-var VIDEO_INICIO=6;
+var VIDEO_INICIO=15;
 function onYouTubeIframeAPIReady(){
   new YT.Player('heroYT',{events:{
     onReady:function(e){e.target.mute();e.target.playVideo();},
