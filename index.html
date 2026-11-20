@@ -564,6 +564,14 @@ section.stone>.wrap{position:relative;z-index:2}
 /* página web estática */
 [hidden]{display:none!important}
 .masonry figure{margin-top:0;margin-left:0;margin-right:0}
+/* video de fondo del hero */
+.hero-video{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;container-type:size}
+.hero-video iframe{position:absolute;top:50%;left:50%;width:max(100cqw,177.78cqh);height:max(100cqh,56.25cqw);transform:translate(-50%,-50%);border:0;opacity:0;animation:vfade 1.2s ease 1.5s forwards}
+.hero-video::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(12,13,15,.88) 0%,rgba(12,13,15,.62) 50%,rgba(12,13,15,.45) 100%),radial-gradient(ellipse 120% 90% at 50% 50%,rgba(0,0,0,0) 40%,rgba(0,0,0,.55) 100%)}
+@media(max-width:959px){.hero-video::after{background:linear-gradient(180deg,rgba(12,13,15,.3) 0%,rgba(12,13,15,.6) 45%,rgba(12,13,15,.82) 100%)}}
+.hero.glow::before{z-index:1}
+@keyframes vfade{to{opacity:1}}
+@media(prefers-reduced-motion:reduce){.hero-video{display:none}}
 </style>
 </head>
 <body>
@@ -599,6 +607,9 @@ section.stone>.wrap{position:relative;z-index:2}
 
 <!-- ============ HERO ============ -->
 <section class="hero stone s-deep glow" id="inicio" style="--gx: 74%; --gy: 46%">
+<div class="hero-video" aria-hidden="true">
+<iframe src="https://www.youtube-nocookie.com/embed/VIcloWJDS1A?autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=VIcloWJDS1A&amp;controls=0&amp;playsinline=1&amp;modestbranding=1&amp;rel=0&amp;disablekb=1&amp;iv_load_policy=3&amp;fs=0" title="Video de fondo" tabindex="-1" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+</div>
 <div class="wrap">
 <div class="hero-grid">
 <div>
