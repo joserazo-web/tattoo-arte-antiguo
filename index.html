@@ -571,6 +571,8 @@ section.stone>.wrap{position:relative;z-index:2}
 @media(max-width:959px){.hero-video::after{background:linear-gradient(180deg,rgba(12,13,15,.3) 0%,rgba(12,13,15,.6) 45%,rgba(12,13,15,.82) 100%)}}
 .hero.glow::before{z-index:1}
 @keyframes vfade{to{opacity:1}}
+/* mapa de Google */
+.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(.25) contrast(1.05)}
 @media(prefers-reduced-motion:reduce){.hero-video{display:none}}
 </style>
 </head>
@@ -608,7 +610,7 @@ section.stone>.wrap{position:relative;z-index:2}
 <!-- ============ HERO ============ -->
 <section class="hero stone s-deep glow" id="inicio" style="--gx: 74%; --gy: 46%">
 <div class="hero-video" aria-hidden="true">
-<iframe src="https://www.youtube-nocookie.com/embed/VIcloWJDS1A?autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=VIcloWJDS1A&amp;controls=0&amp;playsinline=1&amp;modestbranding=1&amp;rel=0&amp;disablekb=1&amp;iv_load_policy=3&amp;fs=0" title="Video de fondo" tabindex="-1" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+<iframe id="heroYT" src="https://www.youtube-nocookie.com/embed/VIcloWJDS1A?autoplay=1&amp;mute=1&amp;start=6&amp;enablejsapi=1&amp;controls=0&amp;playsinline=1&amp;modestbranding=1&amp;rel=0&amp;disablekb=1&amp;iv_load_policy=3&amp;fs=0" title="Video de fondo" tabindex="-1" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin"></iframe>
 </div>
 <div class="wrap">
 <div class="hero-grid">
@@ -804,22 +806,10 @@ Cotiza sin compromiso</a>
 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E2C48A" stroke-width="1.5" style="flex: 0 0 auto; margin-top: 2px" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"></path></svg>
 <div><p class="k">Llamadas</p><p class="v"><a href="tel:+523336099070">33 3609 9070</a></p></div>
 </div>
-<a class="btn btn-gold btn-block" style="width: 100%" href="https://www.google.com/maps/search/?api=1&amp;query=Calzada%20Independencia%20Norte%201573-B%2C%20Guadalajara">Cómo llegar</a>
+<a class="btn btn-gold btn-block" style="width: 100%" href="https://maps.app.goo.gl/trDEnBY2JEPTptAx7" target="_blank" rel="noopener">Cómo llegar</a>
 </div>
-<div class="map rv" role="img" aria-label="Mapa ilustrativo de la ubicación sobre Calzada Independencia Norte">
-<svg class="streets" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-<rect width="600" height="400" fill="#3A3D41"></rect>
-<g stroke="#4B4F54" stroke-width="10"><path d="M0 70H600M0 170H600M0 270H600M0 360H600"></path><path d="M80 0V400M190 0V400M420 0V400M520 0V400"></path></g>
-<g stroke="#44484D" stroke-width="5"><path d="M0 120H600M0 220H600M0 315H600M135 0V400M250 0V400M470 0V400"></path></g>
-<path d="M300 -10L318 410" stroke="#5E6268" stroke-width="26"></path>
-<path d="M300 -10L318 410" stroke="#6C7076" stroke-width="2" stroke-dasharray="14 12"></path>
-<rect x="430" y="185" width="80" height="70" fill="#41454A"></rect>
-<text x="326" y="110" fill="#A9ADB3" font-family="Josefin Sans, sans-serif" font-size="13" letter-spacing="3" transform="rotate(87 326 110)">CALZ. INDEPENDENCIA NTE.</text>
-</svg>
-<div class="pin">
-<span class="tag">Arte Antiguo · 1573-B</span>
-<svg width="38" height="50" viewBox="0 0 38 50" aria-hidden="true"><path d="M19 49S36 30 36 18A17 17 0 0 0 2 18c0 12 17 31 17 31z" fill="#C9A464" stroke="#9C7A3E" stroke-width="1.5"></path><circle cx="19" cy="18" r="6" fill="#2B2E31"></circle></svg>
-</div>
+<div class="map rv">
+<iframe src="https://maps.google.com/maps?q=Tattoo%20Arte%20Antiguo%2C%20Calz.%20Independencia%20Norte%201573-B%2C%20Guadalajara&amp;ll=20.6985261,-103.3295141&amp;z=16&amp;hl=es&amp;output=embed" title="Mapa de Google: Tattoo Arte Antiguo, Calz. Independencia Norte 1573-B, Guadalajara" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
 </div>
 </div>
 </div>
@@ -876,6 +866,15 @@ Escríbenos por WhatsApp</a>
   }
   chips.forEach(function(c){c.addEventListener('click',function(){pick(c.dataset.f);});});
 })();
+// Video del hero: empieza en el segundo VIDEO_INICIO y al terminar vuelve a ese punto
+var VIDEO_INICIO=6;
+function onYouTubeIframeAPIReady(){
+  new YT.Player('heroYT',{events:{
+    onReady:function(e){e.target.mute();e.target.playVideo();},
+    onStateChange:function(e){if(e.data===YT.PlayerState.ENDED){e.target.seekTo(VIDEO_INICIO,true);e.target.playVideo();}}
+  }});
+}
 </script>
+<script src="https://www.youtube.com/iframe_api" async></script>
 </body>
 </html>
